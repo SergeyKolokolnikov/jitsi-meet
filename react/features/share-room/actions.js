@@ -3,6 +3,7 @@
 import { getInviteURL } from '../base/connection';
 
 import { BEGIN_SHARE_ROOM, END_SHARE_ROOM } from './actionTypes';
+import { INVITE_USER } from './actionTypes';
 
 /**
  * Begins the UI procedure to share the URL for the current conference/room.

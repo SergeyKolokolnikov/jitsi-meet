@@ -254,3 +254,13 @@ export const SET_SIP_GATEWAY_ENABLED = 'SET_SIP_GATEWAY_ENABLED';
  * }
  */
 export const SET_START_MUTED_POLICY = 'SET_START_MUTED_POLICY';
+
+/**
+ * The type of (redux) action which signals invite user.
+ *
+ * {
+ *     type: INVITE_USER,
+ *     conference: JitsiConference
+ * }
+ */
+export const INVITE_USER = 'INVITE_USER';

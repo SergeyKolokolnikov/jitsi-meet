@@ -237,6 +237,7 @@ function _conferenceLeft({ getState }, next, action) {
     return result;
 }
 
+
 /**
  * Notifies the feature callkit that the action {@link CONFERENCE_WILL_JOIN} is
  * being dispatched within a specific redux {@code store}.

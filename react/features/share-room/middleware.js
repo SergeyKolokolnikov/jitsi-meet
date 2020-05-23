@@ -1,10 +1,13 @@
 // @flow
 
 import { Share } from 'react-native';
+import { NativeModules, NativeEventEmitter } from 'react-native';
 
 import { getName } from '../app';
 import { MiddlewareRegistry } from '../base/redux';
 import { getShareInfoText } from '../invite';
+
+var NotificationManager = require('react-native').NativeModules.NotificationManager;
 
 import { BEGIN_SHARE_ROOM } from './actionTypes';
 import { endShareRoom } from './actions';
@@ -42,24 +45,7 @@ function _shareRoom(roomURL: string, { dispatch, getState }) {
             const onFulfilled
                 = (shared: boolean) => dispatch(endShareRoom(roomURL, shared));
 
-            Share.share(
-                /* content */ {
-                    message,
-                    title
-                },
-                /* options */ {
-                    dialogTitle: title, // Android
-                    subject: title // iOS
-                })
-                .then(
-                    /* onFulfilled */ value => {
-                        onFulfilled(value.action === Share.sharedAction);
-                    },
-                    /* onRejected */ reason => {
-                        logger.error(
-                            `Failed to share conference/room URL ${roomURL}:`,
-                            reason);
-                        onFulfilled(false);
-                    });
+                NotificationManager.postNotification("inviteUser");
+
         });
 }
